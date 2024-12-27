@@ -1,0 +1,97 @@
+version: "3.1"
+
+intents:
+  - saluto
+  - addio
+  - cerca_prodotto
+  - aggiungi_al_carrello
+  - rimuovi_dal_carrello
+  - visualizza_carrello
+  - procedi_al_pagamento
+  - stato_ordine
+  - chiedi_sconto
+  - informazioni_spedizione
+  - domande_frequenti
+  - informazione
+  - fuori_scopo
+
+entities:
+  - prodotto
+  - categoria
+  - quantita
+  - numero_ordine
+
+slots:
+  prodotto:
+    type: text
+  categoria:
+    type: text
+  quantita:
+    type: text
+  numero_ordine:
+    type: text
+
+responses:
+  utter_saluto:
+    - text: "Ciao! Benvenuto nel nostro e-commerce. Come posso aiutarti oggi?"
+    - text: "Salve! Sono qui per aiutarti con i tuoi acquisti. Cosa stai cercando?"
+
+  utter_addio:
+    - text: "Grazie per aver visitato il nostro negozio. A presto!"
+    - text: "Arrivederci e buon shopping!"
+
+  utter_cerca_prodotto:
+    - text: "Stai cercando un prodotto in particolare o una categoria specifica?"
+
+  utter_aggiungi_al_carrello:
+    - text: "Ho aggiunto {quantita} {prodotto} al carrello."
+    - text: "Il prodotto {prodotto} è stato aggiunto al tuo carrello!"
+
+  utter_rimuovi_dal_carrello:
+    - text: "Ho rimosso {prodotto} dal tuo carrello."
+    - text: "Il prodotto {prodotto} è stato eliminato dal carrello."
+
+  utter_visualizza_carrello:
+    - text: "Ecco cosa c'è nel tuo carrello al momento: {articoli_carrello}."
+    - text: "Hai i seguenti articoli nel carrello: {articoli_carrello}."
+
+  utter_procedi_al_pagamento:
+    - text: "Procediamo al pagamento. Qual è il metodo di pagamento che preferisci?"
+    - text: "Per completare l'acquisto, inserisci i tuoi dati di spedizione e pagamento."
+
+  utter_stato_ordine:
+    - text: "Per favore, forniscimi il numero dell'ordine."
+    - text: "Puoi dirmi il tuo numero d'ordine per verificare lo stato?"
+
+  utter_chiedi_sconto:
+    - text: "Al momento abbiamo uno sconto del 10% sui nuovi arrivi!"
+    - text: "Offriamo promozioni speciali per ordini superiori a 100€."
+
+  utter_informazioni_spedizione:
+    - text: "La spedizione standard richiede 3-5 giorni lavorativi."
+    - text: "Offriamo spedizione gratuita per ordini superiori a 50€."
+
+  utter_domande_frequenti:
+    - text: "Puoi consultare la nostra sezione FAQ qui: [Link alle FAQ]."
+    - text: "Se hai domande, sono qui per aiutarti!"
+
+  utter_fuori_scopo:
+    - text: "Mi dispiace, non sono sicuro di come rispondere a questa domanda."
+
+  utter_informazione:
+    - text: "Grazie per le informazioni. Procediamo."
+
+forms:
+  stato_ordine_form:
+    required_slots:
+      numero_ordine:
+        - type: from_text
+
+session_config:
+  session_expiration_time: 60  # La sessione scade dopo 60 minuti
+  carry_over_slots_to_new_session: true
+
+
+#for milvus
+actions:
+  - action_cerca_prodotto_milvus

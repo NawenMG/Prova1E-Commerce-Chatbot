@@ -1,0 +1,105 @@
+version: "3.1"
+
+nlu:
+- intent: saluto
+  examples: |
+    - Ciao
+    - Buongiorno
+    - Salve
+    - Hey
+    - Ciao bot
+    - Buonasera
+    - Hola
+
+- intent: addio
+  examples: |
+    - Arrivederci
+    - A presto
+    - Ci vediamo
+    - Grazie, ciao!
+    - Bye
+
+- intent: cerca_prodotto
+  examples: |
+    - Voglio cercare un prodotto
+    - Sto cercando [scarpe](prodotto)
+    - Hai delle [camicie](prodotto)?
+    - Mostrami i [telefoni](categoria)
+    - Vorrei vedere [orologi](categoria)
+    - Ci sono prodotti nella categoria [elettronica](categoria)?
+    - Voglio un [portatile](prodotto)
+
+- intent: aggiungi_al_carrello
+  examples: |
+    - Aggiungi al carrello [2](quantita) [scarpe](prodotto)
+    - Metti nel carrello un [orologio](prodotto)
+    - Vorrei aggiungere al carrello [1](quantita) [zaino](prodotto)
+    - Aggiungi [3](quantita) [cuffie](prodotto) al mio carrello
+    - Inserisci nel carrello un [tablet](prodotto)
+
+- intent: rimuovi_dal_carrello
+  examples: |
+    - Rimuovi le [scarpe](prodotto) dal carrello
+    - Togli [1](quantita) [orologio](prodotto) dal mio carrello
+    - Elimina [zaino](prodotto] dal carrello
+    - Vorrei cancellare [2](quantita) [cuffie](prodotto) dal carrello
+
+- intent: visualizza_carrello
+  examples: |
+    - Cosa c'è nel mio carrello?
+    - Mostrami il carrello
+    - Visualizza il carrello
+    - Vorrei vedere cosa ho nel carrello
+
+- intent: procedi_al_pagamento
+  examples: |
+    - Voglio procedere al pagamento
+    - Come faccio a completare l'ordine?
+    - Andiamo al checkout
+    - Procedi con il pagamento
+
+- intent: stato_ordine
+  examples: |
+    - Voglio sapere lo stato del mio ordine
+    - Qual è lo stato del mio ordine [12345](numero_ordine)?
+    - Dove si trova l'ordine numero [98765](numero_ordine)?
+    - Dammi informazioni sul mio ordine [45678](numero_ordine)
+    - Puoi controllare lo stato dell'ordine?
+
+- intent: chiedi_sconto
+  examples: |
+    - Hai sconti disponibili?
+    - Quali sono le offerte di oggi?
+    - C'è uno sconto sulle [scarpe](prodotto)?
+    - Mostrami le promozioni
+    - Ci sono sconti?
+
+- intent: informazioni_spedizione
+  examples: |
+    - Quanto tempo ci vuole per la spedizione?
+    - Quali sono i costi di spedizione?
+    - Offrite spedizione gratuita?
+    - Come funziona la spedizione?
+    - La spedizione è veloce?
+
+- intent: domande_frequenti
+  examples: |
+    - Come posso restituire un prodotto?
+    - Qual è la vostra politica di reso?
+    - Avete un servizio clienti?
+    - Dove posso trovare il supporto?
+
+- intent: informazione
+  examples: |
+    - [2](quantita)
+    - [camicie](prodotto)
+    - [telefoni](categoria)
+    - [12345](numero_ordine)
+    - [elettronica](categoria)
+
+- intent: fuori_scopo
+  examples: |
+    - Raccontami una barzelletta
+    - Qual è il tuo colore preferito?
+    - Sai giocare a scacchi?
+    - Qual è la capitale della Francia?

@@ -1,0 +1,42 @@
+# Configurazione per Rasa
+recipe: default.v1
+
+# Identificatore unico del progetto
+assistant_id: ecommerce-bot-italiano
+
+# Lingua configurata per il bot
+language: it
+
+# Configurazione per la pipeline NLU
+pipeline:
+  - name: WhitespaceTokenizer         # Tokenizza il testo in base agli spazi
+  - name: RegexFeaturizer             # Riconosce pattern come email, numeri, ecc.
+  - name: LexicalSyntacticFeaturizer  # Aggiunge informazioni lessico-sintattiche
+  - name: CountVectorsFeaturizer      # Trasforma il testo in vettori di frequenza
+  - name: CountVectorsFeaturizer      # Supporto per n-grammi
+    analyzer: char_wb
+    min_ngram: 1
+    max_ngram: 4
+  - name: DIETClassifier              # Classificatore per intenti ed entità
+    epochs: 100
+    constrain_similarities: true
+  - name: EntitySynonymMapper         # Mappa sinonimi per entità
+  - name: ResponseSelector            # Seleziona risposte basate sugli intenti
+    epochs: 100
+    constrain_similarities: true
+  - name: FallbackClassifier          # Gestisce casi ambigui o non riconosciuti
+    threshold: 0.3
+    ambiguity_threshold: 0.1
+
+# Configurazione per le politiche di gestione del dialogo
+policies:
+  - name: MemoizationPolicy           # Ricorda flussi predefiniti
+    max_history: 5
+  - name: TEDPolicy                   # Politica di apprendimento profondo per gestire dialoghi complessi
+    max_history: 5
+    epochs: 100
+    constrain_similarities: true
+  - name: RulePolicy                  # Gestisce regole rigide come saluti, fallback, ecc.
+  - name: UnexpecTEDIntentPolicy      # Gestisce intenti inattesi
+    max_history: 5
+    epochs: 100

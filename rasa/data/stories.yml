@@ -1,0 +1,83 @@
+version: "3.1"
+
+stories:
+- story: Saluto e addio
+  steps:
+    - intent: saluto
+    - action: utter_saluto
+    - intent: addio
+    - action: utter_addio
+
+- story: Cerca un prodotto
+  steps:
+    - intent: cerca_prodotto
+    - action: utter_cerca_prodotto
+    - intent: informazione
+      entities:
+        - prodotto: "scarpe"
+    - action: action_mostra_lista_prodotti
+
+- story: Aggiungi prodotto al carrello
+  steps:
+    - intent: aggiungi_al_carrello
+      entities:
+        - prodotto: "scarpe"
+        - quantita: "2"
+    - action: action_aggiungi_al_carrello
+    - action: utter_aggiungi_al_carrello
+
+- story: Rimuovi prodotto dal carrello
+  steps:
+    - intent: rimuovi_dal_carrello
+      entities:
+        - prodotto: "scarpe"
+    - action: action_rimuovi_dal_carrello
+    - action: utter_rimuovi_dal_carrello
+
+- story: Visualizza il carrello
+  steps:
+    - intent: visualizza_carrello
+    - action: action_visualizza_carrello
+    - action: utter_visualizza_carrello
+
+- story: Procedi al pagamento
+  steps:
+    - intent: procedi_al_pagamento
+    - action: action_procedi_al_pagamento
+    - action: utter_procedi_al_pagamento
+
+- story: Verifica stato ordine
+  steps:
+    - intent: stato_ordine
+    - action: utter_stato_ordine
+    - intent: informazione
+      entities:
+        - numero_ordine: "12345"
+    - action: action_controlla_stato_ordine
+
+- story: Chiedi sconti
+  steps:
+    - intent: chiedi_sconto
+    - action: utter_chiedi_sconto
+
+- story: Informazioni sulla spedizione
+  steps:
+    - intent: informazioni_spedizione
+    - action: utter_informazioni_spedizione
+
+- story: Domande frequenti
+  steps:
+    - intent: domande_frequenti
+    - action: utter_domande_frequenti
+
+- story: Fuori contesto
+  steps:
+    - intent: fuori_scopo
+    - action: utter_fuori_scopo
+
+
+#for milvus
+- story: Cerca prodotto con Milvus
+  steps:
+    - intent: cerca_prodotto
+    - action: action_cerca_prodotto_milvus

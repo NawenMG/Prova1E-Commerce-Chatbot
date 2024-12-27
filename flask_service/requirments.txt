@@ -1,0 +1,6 @@
+flask
+requests
+rasa-sdk
+pymilvus
+sentence-transformers
+pymongo

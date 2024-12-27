@@ -1,0 +1,60 @@
+rules:
+
+# Regola per salutare
+- rule: Saluta quando l'utente saluta
+  steps:
+  - intent: saluto
+  - action: utter_saluto
+
+# Regola per dire addio
+- rule: Dì addio quando l'utente dice addio
+  steps:
+  - intent: addio
+  - action: utter_addio
+
+# Regola per confermare che è un bot
+- rule: Dì "Sono un bot" se l'utente lo chiede
+  steps:
+  - intent: bot_challenge
+  - action: utter_iamabot
+
+# Regola per visualizzare il carrello
+- rule: Mostra il carrello quando richiesto
+  steps:
+  - intent: visualizza_carrello
+  - action: action_visualizza_carrello
+
+# Regola per avviare il checkout
+- rule: Avvia il checkout
+  steps:
+  - intent: procedi_al_pagamento
+  - action: action_procedi_al_pagamento
+
+# Regola per gestire lo stato dell'ordine
+- rule: Chiedi il numero dell'ordine se manca
+  condition:
+  - slot_was_set:
+      - numero_ordine: null
+  steps:
+  - intent: stato_ordine
+  - action: utter_chiedi_numero_ordine
+  - action: order_status_form
+  - active_loop: order_status_form
+
+# Regola per mostrare offerte e sconti
+- rule: Mostra le offerte disponibili
+  steps:
+  - intent: chiedi_sconto
+  - action: utter_chiedi_sconto
+
+# Regola per gestire intenti fuori contesto
+- rule: Gestisci intenti non riconosciuti
+  steps:
+  - intent: fuori_scopo
+  - action: utter_fuori_scopo
+
+# Regola per fallback
+- rule: Fallback per input non compreso
+  steps:
+  - intent: nlu_fallback
+  - action: utter_fallback
